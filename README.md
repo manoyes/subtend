@@ -10,6 +10,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/manoyes/subtend)
 ![GitHub repo size](https://img.shields.io/github/repo-size/manoyes/subtend)
 
+![Twitch Status](https://img.shields.io/twitch/status/Deepspacecoder?style=social)
+
 GUI for the creation of SRT files.
 
 This application is in active development and is currently non-functional. More will follow soon.
