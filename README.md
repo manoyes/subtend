@@ -9,6 +9,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/manoyes/subtend)
 ![GitHub last commit](https://img.shields.io/github/last-commit/manoyes/subtend)
 ![GitHub repo size](https://img.shields.io/github/repo-size/manoyes/subtend)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/manoyes/subtend)
 
 ![Twitch Status](https://img.shields.io/twitch/status/Deepspacecoder?style=social)
 
