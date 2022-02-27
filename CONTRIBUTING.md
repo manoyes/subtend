@@ -98,25 +98,24 @@ As the project grows, our documentation will need to as well. To contribute to t
 - Verify there isn't already an open [issue](/issues) that covers your use case. 
 - Try to follow the current format of the documentation being modified.
 
-
 ## Styleguides
 ### Commit Messages
-To make your first commit, please make sure to follow the regex format `Regex`. We follow the [Gitmoji guide](https://gitmoji.dev/) to make browsing through commits easier. 
+To make your commits, please make sure to follow this format: 
 
-Example:
+- The imperative voice (like a command)
+- A short but relevant description of your commit, in the first line, that is limited to 50 characters, which includes a single [Gitmoji](https://gitmoji.dev/) at the beginning.
+  - **Do not include more than one Gitmoji**. Keep single commits within the scope of that Gitmoji (i.e. small). This helps with narrowing down new bugs.
+- Additional information that is important to know, after the first line, 72 characters or fewer per line
+- A reference to the relevant issue or feature `Ref #{issue number}` , in the last line. 
 
-| Emoji         | Emoji meaning |
+Example [Gitmoji](https://gitmoji.dev/):
+
+| Gitmoji         | Emoji meaning |
 | ------------- | ------------- |
 | :bug: `:bug:` | Fix a bug.  |
 | :fire: `:fire:`  | Remove code or files.  |
 | :memo: `:memo:` | Add or update documentation. |
 | :sparkles: `:sparkles:` | Introduce new features. |
-
-Commits should include
-- The imperative voice (like a command)
-- A short but relevant description of your commit, in the first line, that is limited to 50 characters.
-- Additional information that is important to know, after the first line, 72 characters or fewer per line
-- A reference to the relevant issue or feature `Ref #{issue number}` , in the last line.  
 
 Example commit: 
 ```
