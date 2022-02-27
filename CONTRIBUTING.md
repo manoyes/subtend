@@ -1,5 +1,6 @@
 # Contributing to Subtend
 Before contributing to this repository, please thoroughly read these guidelines first. It will make maintenance much easier and developing a much smoother experience. 
+
 All contributions and ideas are welcomed!
 
 ## Table of Contents
@@ -13,7 +14,6 @@ All contributions and ideas are welcomed!
 - [Commit Messages](#commit-messages)
 - [Creating Branches](#creating-branches)
 
-
 ## Questions
 
 > If you want to ask a question, we assume that you have read the available [Documentation](README.md).
@@ -21,9 +21,9 @@ All contributions and ideas are welcomed!
 Before asking a question, please first check any existing or closed [Issues](/issues) that could be relevant. If there aren't any existing issues that answered your question, 
 please feel free to open an issue:
 - Create a new [Issue](/issue/new)
+- Use the bug and feature templates provided
 - Add as much information and context as possible. This is a crucial step to being able to resolve issues correctly.
-- Issue titles should follow the format `Regex`
-<!-- We may want to create an issue template they can use -->
+
 We will then look into the issue as soon as possible.
 
 ## Contributing
@@ -64,7 +64,7 @@ Once it's filed:
 
 - The project team will label the issue accordingly.
 - A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
-- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be implemented by someone.
+- If the team is able to reproduce the issue, the team will confirm it in the issue comment chain, and will assign to a team member.
 
 <!-- TODO: we probably want to change these tags -->
 
@@ -86,7 +86,7 @@ Enhancement or Feature suggestions are tracked as [GitHub issues](/issues).
 - Use a **clear and clean title** for the issue to identify the suggestion.
 - Provide a **detailed description of the suggested feature**.
 - **Describe the current behavior** and **explain how this behavior would change**. Describe why the suggested behavior would be more beneficial.
-- Include any relevant media if related to the gui. You can use [LICEcap](https://www.cockos.com/licecap/) to record relevant Gifs in Windows.
+- Include any relevant media if related to the gui. You can use [LICEcap](https://www.cockos.com/licecap/) to record relevant Gifs in Windows. You can quickly capture screenshots with the Snipping Tool `Win+Shift+S`.
 
 <!-- We need a feature template to reference here -->
 
@@ -102,6 +102,7 @@ As the project grows, our documentation will need to as well. To contribute to t
 ## Styleguides
 ### Commit Messages
 To make your first commit, please make sure to follow the regex format `Regex`. We follow the [Gitmoji guide](https://gitmoji.dev/) to make browsing through commits easier. 
+
 Example:
 
 | Emoji         | Emoji meaning |
@@ -112,9 +113,11 @@ Example:
 | :sparkles: `:sparkles:` | Introduce new features. |
 
 Commits should include
-- a short but relevant description of your commit, in the first line, that is limited to 45 characters.
-- Additional information that is important to know, after the first line.
+- The imperative voice (like a command)
+- A short but relevant description of your commit, in the first line, that is limited to 50 characters.
+- Additional information that is important to know, after the first line, 72 characters or fewer per line
 - A reference to the relevant issue or feature `Ref #{issue number}` , in the last line.  
+
 Example commit: 
 ```
 :fire: remove old files.  
@@ -126,9 +129,9 @@ Ref #0
 
 ### Creating Branches
 When creating a branch make sure that the branch:
-- Follows the regex format `Regex`.
-- Links an open issue or feature number.
-- Has a short and descriptive branch name.
+- Follows the format {issue-number}-{word1}-{word2}-{word3}
+    - The issue number must match that of the issue being worked. **One issue per branch.**
+    - 3 or fewer words
+    - The name should be descriptive of the issue
 
 Example: `1-contribution-guide`
-
