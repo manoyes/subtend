@@ -1,3 +1,4 @@
+// Modifications copyright(C) 2022 Matthew Noyes
 #pragma once
 
 #include <memory>
