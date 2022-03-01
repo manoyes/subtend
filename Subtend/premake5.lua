@@ -6,6 +6,7 @@ project "Subtend"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
+	debugdir ("%{cfg.targetdir}")
 
 	pchheader "sbtpch.h"
 	pchsource "src/sbtpch.cpp"
@@ -36,8 +37,12 @@ project "Subtend"
 	{
 		"ImGui",
 		"%{Library.GLFW}",
-		"%{Library.GLFW}",
 		"%{Library.Vulkan}"
+	}
+
+	postbuildcommands 
+	{
+		"{COPY} imgui.ini %{cfg.targetdir}"
 	}
 
 	--flags { "NoPCH" }
