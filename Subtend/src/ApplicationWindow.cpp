@@ -1,6 +1,7 @@
 #include "sbtpch.h"
 
-#include "TestWindow.h"
+#include "ApplicationWindow.h"
+#include "GUI/CaptionPane.h"
 
 #include "imgui.h"
 
