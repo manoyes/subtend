@@ -1,13 +1,12 @@
 #include "sbtpch.h"
 
 #include "ApplicationWindow.h"
-#include "GUI/CaptionPane.h"
 
 #include "imgui.h"
 
 namespace Subtend
 {
-    void RenderUI()
+    void ApplicationWindow::RenderUI()
     {
         static bool opt_fullscreen = true;
         static bool opt_padding = false;
@@ -89,11 +88,7 @@ namespace Subtend
 
         ImGui::End();
 
+        m_CaptionPane.RenderUI();
 
-        ImGui::Begin("Settings");
-        ImGui::Button("Hello");
-        static float value = 0.0f;
-        ImGui::DragFloat("Value", &value);
-        ImGui::End();
     }
 }

@@ -1,6 +1,18 @@
 #pragma once
 
+#include "GUI/CaptionPane.h"
+
 namespace Subtend
 {
-    void RenderUI();
+    class ApplicationWindow
+    {
+    public:
+        ApplicationWindow() = default;
+
+        void RenderUI();
+
+    private:
+
+        CaptionPane m_CaptionPane;
+    };
 }
