@@ -7,7 +7,7 @@ namespace Subtend
     class ApplicationWindow
     {
     public:
-        ApplicationWindow() = default;
+        ApplicationWindow();
 
         void RenderUI();
 

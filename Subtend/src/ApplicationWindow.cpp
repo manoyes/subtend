@@ -6,6 +6,13 @@
 
 namespace Subtend
 {
+    ApplicationWindow::ApplicationWindow()
+        : m_CaptionPane()
+    {
+        m_CaptionPane.AddCaption("Hello world", "00:00:00000", "00:01:00000");
+        m_CaptionPane.AddCaption("Goodbye earth", "00:01:00000", "00:02:00000");
+    }
+
     void ApplicationWindow::RenderUI()
     {
         static bool opt_fullscreen = true;
