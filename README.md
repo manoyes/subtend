@@ -16,3 +16,13 @@
 GUI for the creation of SRT files.
 
 This application is in active development and is currently non-functional. More will follow soon.
+
+## How to Run
+
+1. Go to `scripts/`
+
+1. Run `Win-GenProjects.bat`
+
+1. Open `Subtend.sln` in Visual Studio Community 2022
+
+1. Run application with `Ctrl + F5`
