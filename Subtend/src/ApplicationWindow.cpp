@@ -6,11 +6,9 @@
 
 namespace Subtend
 {
-    ApplicationWindow::ApplicationWindow()
-        : m_CaptionPane()
+    ApplicationWindow::ApplicationWindow(SharedPtr<CaptionManager> cm)
+        : m_CaptionPane(cm)
     {
-        m_CaptionPane.AddCaption("Hello world", "00:00:00000", "00:01:00000");
-        m_CaptionPane.AddCaption("Goodbye earth", "00:01:00000", "00:02:00000");
     }
 
     void ApplicationWindow::RenderUI()

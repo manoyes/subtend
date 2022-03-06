@@ -5,13 +5,17 @@
 
 namespace Subtend
 {
+    CaptionPane::CaptionPane(SharedPtr<CaptionManager> cm)
+        : m_Context(cm)
+    {
+    }
 
     void Subtend::CaptionPane::RenderUI()
     {
         ImGui::Begin("Caption Editor");
         unsigned int i = 0;
 
-        for (std::list<Caption>::iterator it = m_Captions.begin(); it != m_Captions.end(); it++)
+        for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++)
         {
             DrawCaption(it, i);
             i++;
@@ -19,16 +23,6 @@ namespace Subtend
         }
 
         ImGui::End();
-    }
-
-    void CaptionPane::AddCaption(std::string subtitle, std::string starttime, std::string endtime)
-    {
-        m_Captions.push_back({ subtitle, starttime, endtime });
-    }
-
-    void CaptionPane::RemoveCaption(std::string subtitle, std::string starttime, std::string endtime)
-    {
-        m_Captions.remove({ subtitle, starttime, endtime });
     }
 
     void CaptionPane::DrawCaption(std::list<Caption>::iterator& it, int index)
@@ -84,22 +78,22 @@ namespace Subtend
         ImGui::PushID(std::string("##+" + std::to_string(index)).c_str());
         if (ImGui::Button("+", ImVec2(24, 24)))
         {
-            if (it != m_Captions.end())
+            if (it != m_Context->End())
             {
                 it++;
-                m_Captions.insert(it, { "New Subtitle", caption.EndTime, caption.EndTime });
+                m_Context->Insert(it, { "New Subtitle", caption.EndTime, caption.EndTime });
                 it--;
             }
             else
             {
-                m_Captions.push_back({ "New Subtitle", caption.EndTime, caption.EndTime });
+                m_Context->PushBack({ "New Subtitle", caption.EndTime, caption.EndTime });
             }
         }
         ImGui::PopID();
 
-        if (needsDeletion && m_Captions.size() > 1)
+        if (needsDeletion && m_Context->Size() > 1)
         {
-            it = m_Captions.erase(it);
+            it = m_Context->Erase(it);
         }
     }
 

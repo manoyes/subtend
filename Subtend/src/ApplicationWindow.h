@@ -7,7 +7,7 @@ namespace Subtend
     class ApplicationWindow
     {
     public:
-        ApplicationWindow();
+        ApplicationWindow(SharedPtr<CaptionManager> cm);
 
         void RenderUI();
 
