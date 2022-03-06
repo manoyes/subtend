@@ -15,6 +15,7 @@ namespace Subtend
         {
             DrawCaption(it, i);
             i++;
+            if (it == m_Context->End()) break;
         }
 
         ImGui::End();
