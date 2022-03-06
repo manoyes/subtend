@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ApplicationWindow.h"
+#include "GUI/ApplicationWindow.h"
 #include "Caption.h"
 
 namespace Subtend

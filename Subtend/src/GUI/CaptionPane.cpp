@@ -1,5 +1,5 @@
 #include "sbtpch.h"
-#include "CaptionPane.h"
+#include "GUI/CaptionPane.h"
 
 #include "imgui.h"
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Caption.h"
+#include "Model/Caption.h"
 
 namespace Subtend
 {
