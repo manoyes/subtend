@@ -10,7 +10,7 @@
 // Read comments in imgui_impl_vulkan.h.
 #include "sbtpch.h"
 
-#include "TestWindow.h"
+#include "Model/Application.h"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -489,6 +489,8 @@ int WinMain(
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
+    Subtend::Application app;
+
     // Main loop
     while (!glfwWindowShouldClose(window))
     {
@@ -522,7 +524,7 @@ int WinMain(
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
 
-        Subtend::RenderUI();
+        app.Update();
 
         // Rendering
         ImGui::Render();
