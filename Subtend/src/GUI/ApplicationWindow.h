@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GUI/CaptionPane.h"
+#include "GUI/HistogramPane.h"
 
 namespace Subtend
 {
@@ -14,5 +15,6 @@ namespace Subtend
     private:
 
         CaptionPane m_CaptionPane;
+        HistogramPane m_HistogramPane;
     };
 }

@@ -8,6 +8,7 @@ namespace Subtend
 {
     ApplicationWindow::ApplicationWindow(SharedPtr<CaptionManager> cm)
         : m_CaptionPane(cm)
+        , m_HistogramPane(cm)
     {
     }
 
@@ -94,6 +95,7 @@ namespace Subtend
         ImGui::End();
 
         m_CaptionPane.RenderUI();
+        m_HistogramPane.RenderUI();
 
     }
 }
