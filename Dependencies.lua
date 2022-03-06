@@ -4,6 +4,7 @@ VULKAN_SDK = os.getenv("VULKAN_SDK")
 
 IncludeDir = {}
 IncludeDir["ImGui"] = "%{wks.location}/Subtend/vendor/imgui"
+IncludeDir["ImGuiPlot"] = "%{wks.location}/Subtend/vendor/imgui-plot/include"
 IncludeDir["ImGuiBackends"] = "%{wks.location}/Subtend/vendor/imgui/backends"
 IncludeDir["GLFW"] = "%{wks.location}/Subtend/vendor/imgui/examples/libs/glfw/include"
 IncludeDir["VulkanSDK"] = "%{VULKAN_SDK}/Include"

@@ -24,6 +24,7 @@ project "ImGui"
         "backends/imgui_impl_glfw.h",
         "backends/imgui_impl_vulkan.cpp",
         "backends/imgui_impl_vulkan.h",
+		"../imgui-plot/src/imgui_plot.cpp"
         -- "examples/libs/glfw/include/GLFW/glfw3.h",
         -- "examples/libs/glfw/include/GLFW/glfw3native.h"
 	}
@@ -31,6 +32,7 @@ project "ImGui"
 	includedirs
 	{
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.ImGuiPlot}",
 		"%{IncludeDir.ImGuiBackends}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.VulkanSDK}"

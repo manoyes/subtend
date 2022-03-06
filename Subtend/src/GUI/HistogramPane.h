@@ -15,6 +15,10 @@ namespace Subtend
         void DrawCaption(std::list<Caption>::iterator& caption, int index);
         void DrawHistogram();
 
+        void DrawPlot();
+
+        void DrawMultiPlot();
+
         SharedPtr<CaptionManager> m_Context;
     };
 }
