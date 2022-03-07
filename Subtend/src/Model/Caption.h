@@ -9,6 +9,7 @@ namespace Subtend
         std::string Subtitle;
         std::string StartTime;
         std::string EndTime;
+        bool Selected;
 
         Caption(std::initializer_list<std::string> l)
         {
@@ -16,6 +17,7 @@ namespace Subtend
             Subtitle = *it++;
             StartTime = *it++;
             EndTime = *it++;
+            Selected = false;
         }
 
         bool operator==(const Caption& rhs) const

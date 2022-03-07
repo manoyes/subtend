@@ -30,51 +30,59 @@ namespace Subtend
     void Subtend::HistogramPane::RenderUI()
     {
         ImGui::Begin("Histogram Editor");
+        
         unsigned int i = 0;
-    
-        for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++)
-        {
-            DrawCaption(it, i);
-            i++;
-            if (it == m_Context->End()) break;
-        }
-    
-        DrawHistogram();
+
+        DrawControls();
+        DrawCaptions();
         DrawPlot();
     
         ImGui::End();
     }
     
-    void HistogramPane::DrawCaption(std::list<Caption>::iterator& caption, int index)
+    void HistogramPane::DrawCaptions()
     {
+        unsigned int n = 0;
         
-    }
-    
-    void HistogramPane::DrawHistogram()
-    {
-        static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
-    
-        // By default, if we don't enable ScrollX the sizing policy for each columns is "Stretch"
-    // Each columns maintain a sizing weight, and they will occupy all available width.
-        static ImGuiTableFlags flags = ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_Resizable | ImGuiTableFlags_BordersOuter | ImGuiTableFlags_BordersV | ImGuiTableFlags_ContextMenuInBody;
-    
-        if (ImGui::BeginTable("CaptionTable", m_Context->Size(), flags))
+        ImGui::BeginTable("Caption Timeline", m_Context->Size(), ImGuiTableFlags_Resizable | ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders);
+
+        for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++, n++)
         {
-           ImGui::TableNextRow();
-    
-           
-           unsigned int column = 0;
-    
-           for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++, column++)
-           {
-                ImGui::TableSetColumnIndex(column);
-                ImGui::Text(it->Subtitle.c_str(), column, 0);
-           }
-            ImGui::EndTable();
+            ImGui::TableNextColumn();
+
+            ImGui::PushID(std::string("##subtitle" + std::to_string(n)).c_str());
+            ImGui::Selectable(it->Subtitle.c_str(), &it->Selected, ImGuiSelectableFlags_None);
+            ImGui::PopID();
+
+            // Our buttons are both drag sources and drag targets here!
+            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
+            {
+                // Set payload to carry the index of our item (could be anything)
+                ImGui::SetDragDropPayload("HISTOGRAM_CAPTION", &it, sizeof(std::list<Caption>::iterator));
+
+                // Display preview (could be anything, e.g. when dragging an image we could decide to display
+                // the filename and a small preview of the image, etc.)
+                ImGui::Text((it->Subtitle).c_str());
+
+                ImGui::EndDragDropSource();
+            }
+            if (ImGui::BeginDragDropTarget())
+            {
+                if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("HISTOGRAM_CAPTION"))
+                {
+                    IM_ASSERT(payload->DataSize == sizeof(std::list<Caption>::iterator));
+                    std::list<Caption>::iterator payload_it = *(std::list<Caption>::iterator*)payload->Data;
+
+                    m_Context->Insert(it, *payload_it);
+                    m_Context->Erase(payload_it);
+                }
+                ImGui::EndDragDropTarget();
+            }
+
+            if (std::next(it) != m_Context->End())
+                ImGui::SameLine();
         }
-    
-    
-        ImGui::PlotHistogram("", arr, IM_ARRAYSIZE(arr), 0, NULL, 0.0f, 1.0f, ImVec2(0, 80.0f));
+        ImGui::EndTable();
     }
     
     void HistogramPane::DrawPlot()
@@ -125,7 +133,7 @@ namespace Subtend
         conf.selection.start = &selection_start;
         conf.selection.length = &selection_length;
         //conf.frame_size = ImVec2(buf_size, 200);
-        conf.frame_size = ImVec2(2560, 200);
+        conf.frame_size = ImVec2(1920, 64);
         ImGui::Plot("plot1", conf);
     
         // Draw second plot with the selection
@@ -140,5 +148,18 @@ namespace Subtend
         ImGui::Plot("plot2", conf);
     
         //ImGui::End();
+    }
+    void HistogramPane::DrawControls()
+    {
+        // Replace with current video timestamp
+        ImGui::Text("0:00:00");
+        ImGui::SameLine();
+        ImGui::Button("Undo");
+        ImGui::SameLine();
+        ImGui::Button("Redo");
+        ImGui::SameLine();
+
+        static float zoomValue;
+        ImGui::SliderFloat("Zoom", &zoomValue, 0, 1);
     }
 }
