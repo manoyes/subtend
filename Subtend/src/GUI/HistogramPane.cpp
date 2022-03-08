@@ -31,8 +31,6 @@ namespace Subtend
     {
         ImGui::Begin("Histogram Editor");
         
-        unsigned int i = 0;
-
         DrawControls();
         DrawCaptions();
         DrawPlot();
@@ -42,13 +40,22 @@ namespace Subtend
     
     void HistogramPane::DrawCaptions()
     {
+        float totalColumnWidth = 0.0f;
+        std::vector<float> columnWidths;
+        float currentColumnWidth = 0.0f;
+
+        static float videoLengthInSeconds = 180.0f;
+
         unsigned int n = 0;
-        
+
         ImGui::BeginTable("Caption Timeline", m_Context->Size(), ImGuiTableFlags_Resizable | ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders);
 
         for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++, n++)
         {
             ImGui::TableNextColumn();
+
+            columnWidths.push_back(ImGui::GetColumnWidth(ImGui::GetColumnIndex()));
+            totalColumnWidth += columnWidths.back();
 
             ImGui::PushID(std::string("##subtitle" + std::to_string(n)).c_str());
             ImGui::Selectable(it->Subtitle.c_str(), &it->Selected, ImGuiSelectableFlags_None);
@@ -83,6 +90,34 @@ namespace Subtend
                 ImGui::SameLine();
         }
         ImGui::EndTable();
+
+        unsigned int i = 0;
+        float accumulated_width = 0.0f;
+
+        for (std::list<Caption>::iterator it = m_Context->Begin(); it != m_Context->End(); it++, accumulated_width += columnWidths[i++])
+        {
+            float start = (accumulated_width / totalColumnWidth) * videoLengthInSeconds;
+            float end = ((accumulated_width + columnWidths[i]) / totalColumnWidth) * videoLengthInSeconds;
+
+            int startMilliseconds = start * 1000;
+            int startSeconds = start;
+            int startMinutes = startSeconds / 60;
+            int startHours = startMinutes / 60;
+
+            int endMilliseconds = end * 1000;
+            int endSeconds = end;
+            int endMinutes = endSeconds / 60;
+            int endHours = endMinutes / 60;
+
+            std::stringstream ss;
+            std::stringstream es;
+
+            ss << startHours % 60 << ":" << startMinutes % 60 << ":" << startSeconds % 60 << "," << startMilliseconds % 1000;
+            es << endHours % 60 << ":" << endMinutes % 60 << ":" << endSeconds % 60 << "," << endMilliseconds % 1000;
+
+            it->StartTime = ss.str();
+            it->EndTime = es.str();
+        }
     }
     
     void HistogramPane::DrawPlot()
