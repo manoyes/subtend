@@ -24,4 +24,3 @@ Makefile text eol=lf
 *.png binary
 *.ttf binary
 *.lib binary
-vendor\premake\bin\premake5.exe filter=lfs diff=lfs merge=lfs -text
