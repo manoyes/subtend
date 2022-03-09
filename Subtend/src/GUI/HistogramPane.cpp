@@ -38,6 +38,20 @@ namespace Subtend
         ImGui::End();
     }
     
+
+    void HistogramPane::DrawControls()
+    {
+        // Replace with current video timestamp
+        ImGui::Text("0:00:00");
+        ImGui::SameLine();
+        ImGui::Button("Undo");
+        ImGui::SameLine();
+        ImGui::Button("Redo");
+        ImGui::SameLine();
+
+        static float zoomValue;
+        ImGui::SliderFloat("Zoom", &zoomValue, 0, 1);
+    }
     void HistogramPane::DrawCaptions()
     {
         float totalColumnWidth = 0.0f;
@@ -184,17 +198,5 @@ namespace Subtend
     
         //ImGui::End();
     }
-    void HistogramPane::DrawControls()
-    {
-        // Replace with current video timestamp
-        ImGui::Text("0:00:00");
-        ImGui::SameLine();
-        ImGui::Button("Undo");
-        ImGui::SameLine();
-        ImGui::Button("Redo");
-        ImGui::SameLine();
 
-        static float zoomValue;
-        ImGui::SliderFloat("Zoom", &zoomValue, 0, 1);
-    }
 }

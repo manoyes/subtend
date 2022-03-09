@@ -12,10 +12,10 @@ namespace Subtend
         void RenderUI();
     private:
 
+        void DrawControls();
         void DrawCaptions();
         void DrawPlot();
         void DrawMultiPlot();
-        void DrawControls();
 
         SharedPtr<CaptionManager> m_Context;
     };
