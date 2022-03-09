@@ -21,8 +21,12 @@ This application is in active development and is currently non-functional. More 
 
 1. Go to `scripts/`
 
-1. Run `Win-GenProjects.bat`
+1. Run `Setup.bat` (only need to do this once). Answer the prompts to download any missing dependencies.
 
-1. Open `Subtend.sln` in Visual Studio Community 2022
+1. Run `Win-GenProjects.bat` to generate the `Subtend.sln` file.
+
+1. Open `Subtend.sln` in Visual Studio Community 2022.
+
+1. Set to `Debug` or `Release` build configuration in the dropdown.
 
 1. Run application with `Ctrl + F5`

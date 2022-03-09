@@ -7,9 +7,6 @@ bin-int
 ## OSX artifacts
 .DS_Store
 
-## Dear ImGui artifacts
-imgui.ini
-
 ## General build artifacts
 *.o
 *.obj

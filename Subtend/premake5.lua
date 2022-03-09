@@ -28,6 +28,7 @@ project "Subtend"
 		"src",
 		"vendor/spdlog/include",
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.ImGuiPlot}",
 		"%{IncludeDir.ImGuiBackends}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.VulkanSDK}"
