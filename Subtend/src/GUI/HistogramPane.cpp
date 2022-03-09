@@ -32,12 +32,12 @@ namespace Subtend
         ImGui::Begin("Histogram Editor");
         
         DrawControls();
+        DrawTimeline();
         DrawCaptions();
         DrawPlot();
     
         ImGui::End();
     }
-    
 
     void HistogramPane::DrawControls()
     {
@@ -52,6 +52,38 @@ namespace Subtend
         static float zoomValue;
         ImGui::SliderFloat("Zoom", &zoomValue, 0, 1);
     }
+
+    void HistogramPane::DrawTimeline()
+    {
+        static float videoLengthInSeconds = 180.0f;
+        int totalTimelineChunks = (int) (videoLengthInSeconds / 15.0f);
+
+        ImGui::BeginTable("Scrubbing Timeline", totalTimelineChunks, ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders);
+
+        for (int n = 0; n < totalTimelineChunks; n++)
+        {
+            int timeSegmentInSeconds = ((float)n) / totalTimelineChunks * videoLengthInSeconds;
+            int timeSegmentInMinutes = timeSegmentInSeconds / 60;
+            int timeSegmentInHours = timeSegmentInMinutes / 60;
+
+            std::stringstream ts;
+            ts << timeSegmentInHours % 60 << ":" << timeSegmentInMinutes % 60 << ":" << timeSegmentInSeconds % 60;
+
+            ImGui::TableNextColumn();
+
+            ImGui::PushID(std::string("##timeline" + std::to_string(n)).c_str());
+            ImGui::Text(ts.str().c_str());
+            ImGui::PopID();
+
+            if (n + 1 != totalTimelineChunks)
+            {
+                ImGui::SameLine();
+            }
+        }
+
+        ImGui::EndTable();
+    }
+
     void HistogramPane::DrawCaptions()
     {
         float totalColumnWidth = 0.0f;

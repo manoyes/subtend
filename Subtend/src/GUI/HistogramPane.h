@@ -13,6 +13,7 @@ namespace Subtend
     private:
 
         void DrawControls();
+        void DrawTimeline();
         void DrawCaptions();
         void DrawPlot();
         void DrawMultiPlot();
