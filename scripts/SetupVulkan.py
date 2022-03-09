@@ -10,7 +10,7 @@ from io import BytesIO
 from urllib.request import urlopen
 
 class VulkanConfiguration:
-    requiredVulkanVersion = "1.3.204.0"
+    requiredVulkanVersion = "1.3.204.1"
     vulkanDirectory = "./Subtend/vendor/VulkanSDK"
 
     @classmethod
